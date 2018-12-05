@@ -1,0 +1,53 @@
+{
+    "key": "my-add-on",
+    "name": "Ping Pong",
+    "description": "My very first add-on",
+    "vendor": {
+        "name": "Angry Nerds",
+        "url": "https://www.atlassian.com/angrynerds"
+    },
+    "baseUrl": "{{localBaseUrl}}",
+    "links": {
+        "self": "{{localBaseUrl}}/atlassian-connect.json",
+        "homepage": "{{localBaseUrl}}/atlassian-connect.json"
+    },
+    "authentication": {
+        "type": "jwt"
+    },
+    "lifecycle": {
+        "installed": "/installed"
+    },
+    "scopes": [
+        "READ"
+    ],
+    "modules": {
+        "staticContentMacros": [{
+            "url": "/v1/backgroundColor?color={color}&pageId={page.id}&pageVersion={page.version}&macroHash={macro.hash}",
+            "description": {
+                "value": "Allow users to add a background colour around selected content."
+            },
+            "documentation": {
+                "url" : "http://www.google.com"
+            },
+            "categories": ["formatting"],
+            "outputType": "inline",
+            "bodyType": "rich-text",
+            "name": {
+                "value": "Background Colour (Connect)"
+            },
+            "key": "bg-color-macro",
+            "parameters": [{
+                "identifier": "color",
+                "name": {
+                    "value": "Color"
+                },
+                "type": "string",
+                "required": true,
+                "multiple": false
+            }]
+        }]
+    },
+    "apiMigrations": {
+        "gdpr": true
+    }
+}
